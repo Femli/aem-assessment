@@ -4,7 +4,8 @@
   "description": "A web app that converts Western-Arabic numericals to Roman numerals.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Femli/aem-assessment/issues"
   },
-  "homepage": "https://github.com/Femli/aem-assessment#readme"
+  "homepage": "https://github.com/Femli/aem-assessment#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
 }
