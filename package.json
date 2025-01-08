@@ -1,0 +1,19 @@
+{
+  "name": "aem-assessment",
+  "version": "1.0.0",
+  "description": "A web app that converts Western-Arabic numericals to Roman numerals.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Femli/aem-assessment.git"
+  },
+  "author": "Sanchez, Franco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Femli/aem-assessment/issues"
+  },
+  "homepage": "https://github.com/Femli/aem-assessment#readme"
+}
