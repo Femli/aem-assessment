@@ -22,6 +22,7 @@ class ServerService {
     /**
      * Initializes the server.
      * Configures routes and listens on specified port.
+     * @returns http.Server instance if started successfully.
      */
     start() {
         this.#server = createServer((request, response) => {
@@ -83,14 +84,7 @@ class ServerService {
                 response.end();
             }
         });
-        try {
-            this.#server.listen(this.#port, () => {
-                console.log('Server initialized!')
-            })
-        } catch (error) {
-            console.log(`Failed to initialize server on port ${this.#port}: ${error.message}`);
-        }
-
+        return this.#server.listen(this.#port);
     }
 
     /**
@@ -99,7 +93,6 @@ class ServerService {
     stop() {
         if (this.#server) {
             this.#server.close();
-            console.log('Server shutdown.')
         }
     }
 
