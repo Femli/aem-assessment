@@ -1,11 +1,7 @@
-import ServerService from "./services/server/serverService.js";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import './styles/main.css';
+import App from './App.jsx';
 
-// Start Server Service
-const server = new ServerService();
-server.start()
-    .on('listening', () => {
-        console.log("Server initialized!");
-    })
-    .on('error', (error) => {
-        console.log(`Server failed to initialize: ${error.message}`)
-    });
+const root = createRoot(document.getElementById('root'));
+root.render(<App />);
