@@ -14,9 +14,9 @@ class ServerService {
 
     /**
      * Creates a new Server instance.
-     * @param {number} [port = 3000] - Sets the port number of the server
+     * @param {number} [port = 8080] - Sets the port number of the server
      */
-    constructor(port = 3000) {
+    constructor(port = 8080) {
         this.#port = port;
         this.#BASE_URL = `http://localhost:${this.#port}`;
         this.#conversionService = new RomanNumeralService();
