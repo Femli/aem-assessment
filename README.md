@@ -36,8 +36,10 @@ npm run start:fe //starts React server
 ## Using the App
 
 You can interact with the conversion service via the node server on http://localhost:8080.
+
 Visit the following endpoint `GET /romannumeral?query={number}` and submit your query parameter for a JSON response.
 ![Backend Web Demo](/public/backend-demo.png)
+
 
 If you wish to interact via the React UI, visit http://localhost:3000 and you can submit the form instead.
 ![Frontend Web Demo](/public/frontend-demo.png)
@@ -99,14 +101,14 @@ aem-assessment/
 ```
 
 ## About the App
-The object was to keep the backend simple. There are two primary services at play here:
+The objective was to keep the backend simple. There are two primary services at play here:
 - `Server Service`: Responsible for the configuration and orchestration of the server instance, endpoints, and error handling.
-- `Roman Numeral Service`: Executes the actual conversion. The roman numeral system is position-based, so it was a matter of implementing a recursive pattern-approach for numbers based on the number of digits they have. Special note that there was no web searches or AI involved in figuring out this approach. Just a notepad and brain power.
+- `Roman Numeral Service`: Executes the actual conversion. The Roman numeral system is position-based, so it was a matter of implementing a recursive pattern-approach for numbers based on the number of digits they have. Special note that there was no web searches or AI involved in figuring out this approach. Just a notepad and brain power.
 
-Since we used a node.js server, there is no special packaging here. Only
+Reference to the Roman number system that was used to guide the conversion service: https://romannumerals.guide/
 
 ### Test Approach
-In terms of app dependencies, the Jest unit testing library is universally popular in the Javascript community, so it was a safe bet. Not only are unit tests account for 100% code and branch coverage, but they go further beyond in ensuring tests are thorough and thoughtful.
+In terms testing, the Jest unit testing library is universally popular in the Javascript community, so it was a safe bet here. Not only do unit tests account for 100% code and branch coverage, but they go further beyond in ensuring tests are thorough and thoughtful.
 
 ![Test Coverage](/public/test-coverage.png)
 
