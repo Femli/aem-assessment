@@ -1,7 +1,6 @@
 import ServerService from './serverService.js';
 import request from 'supertest';
 import { jest } from '@jest/globals';
-import { IncomingMessage } from 'http';
 
 describe('ServerService Class', () => {
     let serverInstance;
@@ -68,18 +67,31 @@ describe('ServerService Class', () => {
 
             expect(response.text).toEqual(invalidMessage);
         });
-        //TODO: once roman numeral conversion service is implemented, update this test
-        test('should return a valid message when GETing /romannumeral endpoint with query param that is a number ', async () => {
-            const validMessage = "Conversion service coming soon :)";
+        test('should return json object when GETing /romannumeral endpoint with query param that is a number', async () => {
             const queryInput = 1;
+            const expectedResponse = {
+                'input': 1,
+                'output': 'I',
+            };
 
             const response = await request(httpServer)
                 .get(`/romannumeral?query=${queryInput}`)
-                .expect('Content-Type', 'text/html')
+                .expect('Content-Type', 'application/json')
                 .expect(200); //http status code 200
 
-            expect(response.text).toEqual(validMessage);
+            expect(response.body).toEqual(expectedResponse);
         });
+        test.each([0, 4000])
+            ('should return invalid messsage when GETing /romannumeral endpoint with query param that is a number outside range 1-3999', async (queryInput) => {
+                const invalidMessage = "Can only convert numbers 1-3999. Please try again.";
+
+                const response = await request(httpServer)
+                    .get(`/romannumeral?query=${queryInput}`)
+                    .expect('Content-Type', 'text/html')
+                    .expect(200); //http status code 200
+
+                expect(response.text).toEqual(invalidMessage);
+            });
         test('should return 404 error with invalid message when GETing any endpoint that is not /romannumeral', async () => {
             const endpoint = '/randomEndpoint';
             const invalidMesage = 'Resource not found!';

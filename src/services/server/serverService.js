@@ -1,5 +1,6 @@
 import { createServer, IncomingMessage } from 'http';
 import { URL } from 'url';
+import RomanNumeralService from '../roman-numeral-conversion/romanNumeralService.js';
 
 /**
  * Service class for managing the http server instance.
@@ -9,6 +10,7 @@ class ServerService {
     #server;
     #port;
     #BASE_URL;
+    #conversionService;
 
     /**
      * Creates a new Server instance.
@@ -17,6 +19,7 @@ class ServerService {
     constructor(port = 3000) {
         this.#port = port;
         this.#BASE_URL = `http://localhost:${this.#port}`;
+        this.#conversionService = new RomanNumeralService();
     }
 
     /**
@@ -48,13 +51,23 @@ class ServerService {
                             const value = parseInt(param);
                             if (isNaN(value)) throw new Error("Entry is not a valid number.");
 
-                            //TODO: Roman Numeral Conversion Service...
-                            //placeholder for now
-                            response.writeHead(200, { 'Content-Type': 'text/html' });
-                            response.write(
-                                "Conversion service coming soon :)"
-                            );
-                            response.end();
+                            //conversion service will attempt to return the roman numeral requested
+                            //only values in range of [1, 3999]
+                            if (1 <= value && value <= 3999) {
+                                const convertedValue = this.#conversionService.converter(value);
+                                response.writeHead(200, { 'Content-Type': 'application/json' });
+                                response.write(JSON.stringify({
+                                    'input': value,
+                                    'output': convertedValue
+                                }));
+                                response.end();
+                            } else {
+                                response.writeHead(200, { 'Content-Type': 'text/html' });
+                                response.write(
+                                    "Can only convert numbers 1-3999. Please try again."
+                                );
+                                response.end();
+                            }
                         } catch (error) {
                             console.log(`${error.name}: ${error.message}`)
                             response.writeHead(200, { 'Content-Type': 'text/html' });
