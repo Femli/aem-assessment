@@ -1,8 +1,8 @@
-# Project - Roman Numeral Conversion App
+# Roman Numeral Conversion App
 
 ![Roman Tablet](/public/roman-tablet.png)
 
-The Roman Numeral Conversion App application takes any Western-Arabic Numbers (range 1-3999) and prints out the Roman Number equivalent. This is a lightweight application meant to run locally in your system.
+The application takes any Western-Arabic Numbers (range 1-3999) and prints out the Roman Number equivalent. This is a lightweight application meant to run locally in your system.
 
 This app consists of a Node.js backend service running on port 8080 and a React frontend running on port 3000.
 
@@ -31,7 +31,7 @@ npm run start:be //starts node server
 npm run start:fe //starts React server
 ```
 - Backend listening on: http://localhost:8080
-- Fronend listening on: http://localhost:3000
+- Frontend listening on: http://localhost:3000
 
 ## Using the App
 
@@ -83,7 +83,7 @@ aem-assessment/
 │   │   ├── ThemeSetter.jsx  # Theme context provider
 │   │   └── Toggler.jsx      # Toggle component
 │   ├── styles/            
-│   │   └── main.css       # Global styles and Tailwind
+│   │   └── main.css       # Global styles
 │   ├── App.jsx            # Root React component
 │   ├── index.html         # HTML template
 │   └── index.js           # Frontend entry point
@@ -101,14 +101,14 @@ aem-assessment/
 ```
 
 ## About the App
-The objective was to keep the backend simple. There are two primary services at play here:
+There are two primary services at play here:
 - `Server Service`: Responsible for the configuration and orchestration of the server instance, endpoints, and error handling.
-- `Roman Numeral Service`: Executes the actual conversion. The Roman numeral system is position-based, so it was a matter of implementing a recursive pattern-approach for numbers based on the number of digits they have. Special note that there was no web searches or AI involved in figuring out this approach. Just a notepad and brain power.
+- `Roman Numeral Service`: Executes the actual conversion. The Roman numeral system is position-based, so it was a matter of implementing a recursive pattern-approach for numbers based on the number of digits they have.
 
-Reference to the Roman number system that was used to guide the conversion service: https://romannumerals.guide/
+Reference to the Roman number system that was used to guide the conversion service: https://romannumerals.guide/chart
 
 ### Test Approach
-In terms testing, the Jest unit testing library is universally popular in the Javascript community, so it was a safe bet here. Not only do unit tests account for 100% code and branch coverage, but they go further beyond in ensuring tests are thorough and thoughtful.
+In terms testing, the Jest unit testing library is universally popular in the Javascript community, so it was a safe bet here. The unit tests account for 100% code and branch coverage.
 
 ![Test Coverage](/public/test-coverage.png)
 
@@ -154,4 +154,4 @@ In terms testing, the Jest unit testing library is universally popular in the Ja
 - Development Utilities
     - nodemon (^3.1.9): Auto-restart Node.js application during development
 
-The application uses ES modules ("type": "module" in package.json) and requires Node.js version 18 or higher due to the use of modern JavaScript features.
+The application uses ES modules ("type": "module" in package.json).
